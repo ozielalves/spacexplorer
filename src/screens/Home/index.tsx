@@ -7,7 +7,7 @@ import { ListHeader } from "../../components/ListHeader";
 import { ListItem, ListItemSkeleton } from "../../components/ListItem";
 import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
-import { LoadingFooter } from "../../components/LoadingFooter";
+import { MissionsEmptyState } from "../../components/MissionsEmptyState";
 
 import { styles } from "./styles";
 import { useMissions } from "../../hooks/useMissions";
@@ -35,36 +35,40 @@ export function Home() {
         <Profile />
       </View>
 
-      <View>
-        <ListHeader
-          title="Last Missions"
-          subtitle={`Total ${missions?.length}`}
-        />
-        <FlatList
-          data={missions}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) =>
-            loading ? (
-              <ListItemSkeleton />
-            ) : (
-              <ListItem data={item} onPress={() => handleLaunchDetails(item)} />
-            )
-          }
-          style={styles.missions}
-          ItemSeparatorComponent={() => <ListDivider />}
-          refreshControl={
-            <RefreshControl
-              refreshing={loading}
-              onRefresh={refetch}
-              colors={[theme.colors.primary]}
-            />
-          }
-          contentContainerStyle={{ paddingBottom: 69 }}
-          /* onEndReached={this.loadRepositories}
-            onEndReachedThreshold={0.1} */
-          ListFooterComponent={loading ? <LoadingFooter /> : null}
-        />
-      </View>
+      {error ? (
+        <MissionsEmptyState />
+      ) : (
+        <View>
+          <ListHeader
+            title="Last Missions"
+            subtitle={`Total ${missions?.length}`}
+          />
+          <FlatList
+            data={missions}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) =>
+              loading ? (
+                <ListItemSkeleton />
+              ) : (
+                <ListItem
+                  data={item}
+                  onPress={() => handleLaunchDetails(item)}
+                />
+              )
+            }
+            style={styles.missions}
+            ItemSeparatorComponent={() => <ListDivider />}
+            refreshControl={
+              <RefreshControl
+                refreshing={loading}
+                onRefresh={refetch}
+                colors={[theme.colors.primary]}
+              />
+            }
+            contentContainerStyle={{ paddingBottom: 69 }}
+          />
+        </View>
+      )}
     </Background>
   );
 }
