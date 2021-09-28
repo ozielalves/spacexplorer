@@ -30,7 +30,7 @@ interface MissionsContextValues {
   refetch: (
     variables?: Partial<OperationVariables> | undefined
   ) => Promise<ApolloQueryResult<APIResponse>>;
-  toggleLikeImage: (urlImage: any) => void;
+  toggleLikeImage: (urlImage: string) => void;
 }
 
 export interface APIResponse {
@@ -44,10 +44,10 @@ export function MissionsContextProvider({
 }: MissionsContextProviderProps) {
   const [likedImages, setLikedImage] = useState([] as string[]);
 
-  const { loading, error, data, refetch } = useQuery<
+  const { loading, error, data, refetch, fetchMore } = useQuery<
     APIResponse,
     OperationVariables
-  >(GET_ALL_MISSIONS);
+  >(GET_ALL_MISSIONS, {});
 
   useEffect(() => {
     if (error) {
@@ -71,7 +71,7 @@ export function MissionsContextProvider({
   }
 
   const toggleLikeImage = useCallback(
-    (urlImage) => {
+    (urlImage: string) => {
       setLikedImage((prev) =>
         prev.includes(urlImage)
           ? prev.filter((url) => url !== urlImage)
