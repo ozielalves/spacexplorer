@@ -49,12 +49,6 @@ export function MissionsContextProvider({
     OperationVariables
   >(GET_ALL_MISSIONS, {});
 
-  useEffect(() => {
-    if (error) {
-      Alert.alert(error.message);
-    }
-  }, [error]);
-
   function getParsedData() {
     if (!data) {
       return [] as Mission[];
@@ -64,6 +58,10 @@ export function MissionsContextProvider({
       return {
         ...mission,
         launch_date_local: getFormatedDate(new Date(mission.launch_date_local)),
+        links: {
+          ...mission.links,
+          flickr_images: mission.links.flickr_images.slice(0, 3),
+        },
       };
     });
 
