@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloClient, ApolloProvider } from "@apollo/client";
 import { StatusBar } from "react-native";
 import { Inter_400Regular, Inter_500Medium } from "@expo-google-fonts/inter";
 import {
@@ -10,7 +10,8 @@ import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 
 import { Background } from "./src/components/Background";
-import { Intro } from "./src/screens/Intro";
+import { Routes } from "./src/routes";
+import { MissionsContextProvider } from "./src/hooks/useMissions";
 import { client } from "./src/services/client";
 
 export default function App() {
@@ -27,14 +28,16 @@ export default function App() {
 
   return (
     <ApolloProvider client={client}>
+      <MissionsContextProvider>
         <Background>
           <StatusBar
             barStyle="light-content"
             backgroundColor="transparent"
             translucent
           />
-          <Intro />
+          <Routes />
         </Background>
+      </MissionsContextProvider>
     </ApolloProvider>
   );
 }
