@@ -13,7 +13,7 @@ export function Profile() {
           <Text style={styles.greeting}>Hello,</Text>
           <Text style={styles.username}>Oziel</Text>
         </View>
-        <Text style={styles.message}>Let's go to the moon with us</Text>
+        <Text style={styles.message}>Let's explore space with us</Text>
       </View>
     </View>
   );

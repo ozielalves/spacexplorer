@@ -34,7 +34,7 @@ export function Intro() {
             Follow {"\n"} the latest {"\n"} SpaceX missions
           </Text>
           <Text style={styles.subtitle}>
-            See images, rocket names {"\n"} and other details.
+            Keep updated with the {"\n"} the latest missions performed.
           </Text>
           <ButtonIcon
             icon={<SpaceshipSvg />}
