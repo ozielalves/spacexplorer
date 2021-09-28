@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloClient, ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import { StatusBar } from "react-native";
 import { Inter_400Regular, Inter_500Medium } from "@expo-google-fonts/inter";
 import {
