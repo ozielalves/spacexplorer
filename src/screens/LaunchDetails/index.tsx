@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Linking, ScrollView } from "react-native";
+import { Linking, ScrollView, Share } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import {
   Fontisto,
@@ -7,6 +7,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { BorderlessButton, RectButton } from "react-native-gesture-handler";
+import LaunchRocketSvg from "../../assets/launch-rocket.svg";
 
 import { Header } from "../../components/Header";
 import { Background } from "../../components/Background";
@@ -15,10 +16,9 @@ import { ListHeader } from "../../components/ListHeader";
 import { DetailItem } from "../../components/DetailItem";
 import { ImageModal } from "../../components/ImageModal";
 import { ImageSlider } from "../../components/ImageSlider";
-
 import { LaunchDetailsProps } from "../../routes/auth.routes";
+
 import { theme } from "../../global/styles/theme";
-import LaunchRocketSvg from "../../assets/launch-rocket.svg";
 
 export function LaunchDetails() {
   const route = useRoute();
@@ -26,6 +26,10 @@ export function LaunchDetails() {
 
   const [imageModalVisible, setImageModalVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+
+  const articleDomainUrl = data.links.article_link
+    ? getUrlDomain(data.links.article_link)
+    : "";
 
   const toggleImageModalVisibility = useCallback(() => {
     setImageModalVisible((prev) => !prev);
@@ -46,14 +50,27 @@ export function LaunchDetails() {
     return domain;
   }
 
+  function handleShareMission() {
+    if (data.links.article_link) {
+      const message = `See mission SpaceX ${data.mission_name} article at ${articleDomainUrl}`;
+
+      Share.share({
+        message,
+        url: data.links.article_link,
+      });
+    }
+  }
+
   return (
     <Background>
       <Header
         title="Mission"
         action={
-          <BorderlessButton>
-            <Fontisto name="share" size={24} color={theme.colors.primary} />
-          </BorderlessButton>
+          data.links.article_link && (
+            <BorderlessButton onPress={handleShareMission}>
+              <Fontisto name="share" size={24} color={theme.colors.primary} />
+            </BorderlessButton>
+          )
         }
       />
 
@@ -62,7 +79,7 @@ export function LaunchDetails() {
         data={data.links.flickr_images}
         onPress={handlePressImage}
       />
-  
+
       <ScrollView showsVerticalScrollIndicator={false}>
         <ListHeader title="Launch Details" />
         <DetailItem
@@ -97,9 +114,7 @@ export function LaunchDetails() {
                   />
                 }
                 title="Article"
-                description={`${getUrlDomain(
-                  data.links.article_link
-                )} - Click to view`}
+                description={`${articleDomainUrl} - Click to view`}
               />
             </RectButton>
             <ListDivider />

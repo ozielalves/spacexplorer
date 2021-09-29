@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.title500,
     fontSize: 24,
     color: theme.colors.heading,
+    textAlign: "center",
     marginRight: 6,
     marginBottom: 38,
   },

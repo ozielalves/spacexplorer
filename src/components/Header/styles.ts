@@ -12,9 +12,12 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  iconButton: {
+    padding: 5,
+  },
   title: {
     flex: 1,
-    textAlign: 'center',
+    textAlign: "center",
     fontFamily: theme.fonts.title700,
     color: theme.colors.heading,
     fontSize: 20,

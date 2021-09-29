@@ -1,8 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { ReactNode } from "react";
 import { Text, View } from "react-native";
-import { theme } from "../../global/styles/theme";
 
+import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
 
 interface DetailItemProps {

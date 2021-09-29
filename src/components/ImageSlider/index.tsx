@@ -12,9 +12,9 @@ import {
 import { BorderlessButton, RectButton } from "react-native-gesture-handler";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 
-import { useMissions } from "../../hooks/useMissions";
-
 import SpaceshipSvg from "../../assets/spaceship.svg";
+
+import { useMissions } from "../../hooks/useMissions";
 import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
 
