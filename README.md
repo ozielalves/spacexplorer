@@ -136,7 +136,7 @@ expo start --android
 
 ## Main Packages
 
-Todos os packages utilizados neste projetos se encontram no arquivo pubspec.yaml. Os pacotes do bloco dependencies são necessários durante o build do apk; os pacotes do bloco [dev_dependencies](https://dart.dev/tools/pub/dependencies#dev-dependencies) não são chamados durante o build (geralmente utilizados em testes e geração de código). Segue abaixo uma breve explicação e motivação de uso para alguns pacotes utilizados no projeto.
+All packages used in these projects are found in the package.json file
 
 ### **Fonts**
 
