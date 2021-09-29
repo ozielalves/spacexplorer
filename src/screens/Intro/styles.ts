@@ -26,4 +26,7 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.title500,
     lineHeight: 25,
   },
+  icon: {
+    transform: [{ rotate: "90deg" }],
+  },
 });

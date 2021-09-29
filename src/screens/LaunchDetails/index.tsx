@@ -114,7 +114,7 @@ export function LaunchDetails() {
                   />
                 }
                 title="Article"
-                description={`${articleDomainUrl} - Click to view`}
+                description={`${articleDomainUrl} - Tap to view`}
               />
             </RectButton>
             <ListDivider />

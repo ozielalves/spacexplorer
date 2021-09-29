@@ -30,15 +30,14 @@ export function Intro() {
         />
 
         <View style={styles.content}>
-          <Text style={styles.title}>
-            Follow {"\n"} the latest {"\n"} SpaceX missions
-          </Text>
+          <Text style={styles.title}>Countdown {"\n"} to launch</Text>
           <Text style={styles.subtitle}>
-            Keep updated with the {"\n"} the latest missions performed.
+            Keep updated with the {"\n"} the latest SpaceX missions {"\n"}{" "}
+            performed.
           </Text>
           <ButtonIcon
-            icon={<SpaceshipSvg />}
-            title="Check missions"
+            icon={<SpaceshipSvg style={styles.icon}/>}
+            title="Lift off"
             onPress={handleIntro}
           />
         </View>

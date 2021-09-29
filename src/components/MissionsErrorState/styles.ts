@@ -12,7 +12,12 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     color: theme.colors.heading,
     textAlign: "center",
-    marginRight: 6,
+    marginBottom: 2,
+  },
+  subtitle:{
+    fontFamily: theme.fonts.text400,
+    color: theme.colors.highlight,
+    textAlign: "center",
     marginBottom: 38,
   },
   button: {

@@ -1,12 +1,17 @@
 import React from "react";
-import { FlatList, View, RefreshControl } from "react-native";
+import {
+  FlatList,
+  View,
+  RefreshControl,
+  ActivityIndicator,
+} from "react-native";
 
 import { ListHeader } from "../ListHeader";
 import { ListItem } from "../ListItem";
 import { ListDivider } from "../ListDivider";
-import { MissionsErrorState } from "../MissionErrorState";
+import { MissionsErrorState } from "../MissionsErrorState";
+import { MissionsEmptyState } from "../MissionsEmptyState";
 import { ListSkeleton } from "../ListSkeleton";
-import { Skeleton } from "../Skeleton";
 
 import { useMissions } from "../../hooks/useMissions";
 import { Mission } from "../../models/mission";
@@ -28,7 +33,7 @@ export function Missions({ goToLauchDetails }: MissionsProps) {
         <MissionsErrorState />
       ) : loading ? (
         <ListSkeleton />
-      ) : (
+      ) : missions.length ? (
         <View>
           <ListHeader
             title="Last Missions"
@@ -56,12 +61,14 @@ export function Missions({ goToLauchDetails }: MissionsProps) {
               canLoadMore ? (
                 <>
                   <ListDivider />
-                  <Skeleton />
+                  <ActivityIndicator color={theme.colors.primary} />
                 </>
               ) : null
             }
           />
         </View>
+      ) : (
+        <MissionsEmptyState />
       )}
     </>
   );
