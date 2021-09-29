@@ -1,20 +1,20 @@
-import React from "react";
+import React, { memo } from "react";
 import { Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
-
 import CameraSvg from "../../assets/camera.svg";
-import { theme } from "../../global/styles/theme";
-import { Mission } from "../../models/mission";
+
 import { GuildIcon } from "../GuildIcon";
 
+import { Mission } from "../../models/mission";
+import { theme } from "../../global/styles/theme";
 import { styles } from "./styles";
 
 interface PrivateProps extends RectButtonProps {
   data: Mission;
 }
 
-function ListItem({ data, ...props }: PrivateProps) {
+function ListItemComponent({ data, ...props }: PrivateProps) {
   const { mission_name, launch_date_local, rocket } = data;
   const { flickr_images, article_link } = data.links;
 
@@ -47,9 +47,7 @@ function ListItem({ data, ...props }: PrivateProps) {
                 size={24}
                 color={theme.colors.primary}
               />
-              <Text style={styles.date}>
-                {launch_date_local}
-              </Text>
+              <Text style={styles.date}>{launch_date_local}</Text>
             </View>
 
             <View style={styles.imageCount}>
@@ -63,4 +61,4 @@ function ListItem({ data, ...props }: PrivateProps) {
   );
 }
 
-export { ListItem };
+export const ListItem = memo(ListItemComponent);

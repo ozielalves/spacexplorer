@@ -13,10 +13,10 @@ import {
   ApolloQueryResult,
 } from "@apollo/client";
 
+import { Mission } from "../../models/mission";
 import { getFormatedDate } from "../../utils/getFormatedDate";
 import { GET_ALL_MISSIONS } from "./queries";
-import { Mission } from "../../models/mission";
-import { Alert } from "react-native";
+import { variables } from "./constants";
 
 interface MissionsContextProviderProps {
   children: ReactNode;
@@ -25,16 +25,23 @@ interface MissionsContextProviderProps {
 interface MissionsContextValues {
   loading: boolean;
   error: ApolloError | undefined;
-  missions: Mission[] | undefined;
+  missions: Mission[] | [];
   likedImages: string[];
   refetch: (
     variables?: Partial<OperationVariables> | undefined
   ) => Promise<ApolloQueryResult<APIResponse>>;
+  loadMore: () => void;
+  canLoadMore: boolean;
   toggleLikeImage: (urlImage: string) => void;
 }
 
 export interface APIResponse {
   launchesPast: Mission[];
+}
+
+export interface GetAllMissionsVars {
+  limit: number;
+  offset: number;
 }
 
 export const MissionsContext = createContext({} as MissionsContextValues);
@@ -43,11 +50,20 @@ export function MissionsContextProvider({
   children,
 }: MissionsContextProviderProps) {
   const [likedImages, setLikedImage] = useState([] as string[]);
+  const [canLoadMore, setCanLoadMore] = useState(true);
 
   const { loading, error, data, refetch, fetchMore } = useQuery<
     APIResponse,
-    OperationVariables
-  >(GET_ALL_MISSIONS, {});
+    GetAllMissionsVars
+  >(GET_ALL_MISSIONS, {
+    variables,
+  });
+
+  useEffect(() => {
+    if (data) {
+      setCanLoadMore(data.launchesPast.length % variables.limit === 0);
+    }
+  }, [data]);
 
   function getParsedData() {
     if (!data) {
@@ -60,7 +76,9 @@ export function MissionsContextProvider({
         launch_date_local: getFormatedDate(new Date(mission.launch_date_local)),
         links: {
           ...mission.links,
-          flickr_images: mission.links.flickr_images.slice(0, 3),
+          flickr_images: mission.links.flickr_images
+            ? mission.links.flickr_images.slice(0, 3)
+            : [],
         },
       };
     });
@@ -79,6 +97,14 @@ export function MissionsContextProvider({
     [setLikedImage]
   );
 
+  const loadMore = useCallback(() => {
+    fetchMore({
+      variables: {
+        offset: data ? data.launchesPast.length : 0,
+      },
+    });
+  }, [fetchMore, data]);
+
   return (
     <MissionsContext.Provider
       value={{
@@ -87,6 +113,8 @@ export function MissionsContextProvider({
         missions: getParsedData(),
         likedImages,
         refetch,
+        loadMore,
+        canLoadMore,
         toggleLikeImage,
       }}
     >

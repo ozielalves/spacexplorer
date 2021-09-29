@@ -26,7 +26,7 @@ export function Skeleton({ height = 70 }: SkeletonProps) {
     AnimatedValue.setValue(0);
     Animated.timing(AnimatedValue, {
       toValue: 1,
-      duration: 1000,
+      duration: 600,
       useNativeDriver: false,
     }).start(() => {
       setTimeout(() => {

@@ -7,6 +7,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { BorderlessButton, RectButton } from "react-native-gesture-handler";
+import LaunchRocketSvg from "../../assets/launch-rocket.svg";
 
 import { Header } from "../../components/Header";
 import { Background } from "../../components/Background";
@@ -18,7 +19,6 @@ import { ImageSlider } from "../../components/ImageSlider";
 import { LaunchDetailsProps } from "../../routes/auth.routes";
 
 import { theme } from "../../global/styles/theme";
-import LaunchRocketSvg from "../../assets/launch-rocket.svg";
 
 export function LaunchDetails() {
   const route = useRoute();
