@@ -136,7 +136,7 @@ expo start --android
 
 ## Main Packages
 
-All packages used in these projects are found in the package.json file
+All packages used in these project can be found in the package.json file
 
 ### **Fonts**
 
