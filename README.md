@@ -40,7 +40,7 @@ A simple welcome screen.
 Displays latest launches data chronologically in a user-friendly manner.
 
 - List pagination using infinite scroll. **(Bonus)** 
-- Minor modifications to the request query to provide performance improvements (added lunch id) and infinite scroll. **(Bonus)** 
+- Minor modifications to the request query to provide performance improvements (added lunch id) and infinite scroll (query variables). **(Bonus)** 
 - Preview of image quantity and rocket name **(Bonus)**
 - Visual Feedbacks
   - List skeleton loading **(Bonus)**
@@ -109,7 +109,7 @@ yarn install
 ```
 
 ### Network configuration
-If you are running the project on your iOS device, **both the device and your workstation must be on the same network**! See the Troubleshooting section below if you are experiencing issues.
+If you are running the project on your iOS or Android device, **both the device and your workstation must be on the same network**! If you are on Windows using WSL, use Tunnel connection option.
 
 ### Running the project
 ```bash
