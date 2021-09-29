@@ -7,7 +7,6 @@ import CameraSvg from "../../assets/camera.svg";
 import { theme } from "../../global/styles/theme";
 import { Mission } from "../../models/mission";
 import { GuildIcon } from "../GuildIcon";
-import { ListItemSkeleton } from "./Skeleton";
 
 import { styles } from "./styles";
 
@@ -64,4 +63,4 @@ function ListItem({ data, ...props }: PrivateProps) {
   );
 }
 
-export { ListItem, ListItemSkeleton };
+export { ListItem };

@@ -4,10 +4,11 @@ import { useNavigation } from "@react-navigation/native";
 
 import { Profile } from "../../components/Profile";
 import { ListHeader } from "../../components/ListHeader";
-import { ListItem, ListItemSkeleton } from "../../components/ListItem";
+import { ListItem } from "../../components/ListItem";
 import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
 import { MissionsEmptyState } from "../../components/MissionsEmptyState";
+import { ListSkeleton } from "../../components/ListSkeleton";
 
 import { styles } from "./styles";
 import { useMissions } from "../../hooks/useMissions";
@@ -37,6 +38,8 @@ export function Home() {
 
       {error ? (
         <MissionsEmptyState />
+      ) : loading ? (
+        <ListSkeleton />
       ) : (
         <View>
           <ListHeader
@@ -46,26 +49,24 @@ export function Home() {
           <FlatList
             data={missions}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) =>
-              loading ? (
-                <ListItemSkeleton />
-              ) : (
-                <ListItem
-                  data={item}
-                  onPress={() => handleLaunchDetails(item)}
-                />
-              )
-            }
+            renderItem={({ item }) => (
+              <ListItem data={item} onPress={() => handleLaunchDetails(item)} />
+            )}
             style={styles.missions}
             ItemSeparatorComponent={() => <ListDivider />}
-            refreshControl={
+            refreshing={loading}
+            onRefresh={refetch}
+            /* refreshControl={
               <RefreshControl
                 refreshing={loading}
                 onRefresh={refetch}
                 colors={[theme.colors.primary]}
               />
-            }
+            } */
             contentContainerStyle={{ paddingBottom: 69 }}
+            /* onEndReached={fetchMore} */
+            onEndReachedThreshold={0.1}
+            /* ListFooterComponent={loading ? <LoadingFooter /> : null} */
           />
         </View>
       )}

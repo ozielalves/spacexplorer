@@ -1,13 +1,17 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect } from "react";
 import { View, Dimensions, Animated } from "react-native";
-import { theme } from "../../../global/styles/theme";
+import { theme } from "../../global/styles/theme";
 
 const { width } = Dimensions.get("window");
 
 import { styles } from "./styles";
 
-export function ListItemSkeleton() {
+interface SkeletonProps {
+  height?: number;
+}
+
+export function Skeleton({ height = 70 }: SkeletonProps) {
   const AnimatedValue = new Animated.Value(0);
 
   const { secondary70 } = theme.colors;
@@ -37,7 +41,7 @@ export function ListItemSkeleton() {
   });
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { height }]}>
       <Animated.View style={[styles.skeleton, { transform: [{ translateX }] }]}>
         <LinearGradient
           style={styles.container}
