@@ -28,7 +28,7 @@ export function Header({ title, action }: HeaderProps) {
       style={styles.container}
       colors={[secondary100, secondary40]}
     >
-      <BorderlessButton onPress={handleGoBack}>
+      <BorderlessButton style={styles.iconButton} onPress={handleGoBack}>
         <Feather name="arrow-left" size={24} color={heading} />
       </BorderlessButton>
 
