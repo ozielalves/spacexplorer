@@ -94,14 +94,6 @@ Go to the App Store on your iOS or Andriod device, and install the Expo Client a
 ## Development
 Run the project on your workstation and preview app on your phone or in simulator.
 
-### Pitfalls
-There's an [open issue](https://github.com/react-community/create-react-native-app/issues/234) affecting OSX & Linux developers - to prevent the startup script from failing, users must increase their system-level [file/process limits](https://www.freebsd.org/doc/handbook/configtuning-kernel-limits.html). You may want to write these commands to your shell config file, as the following commands are temporary until reboot.
-
-```bash
-sudo sysctl -w kern.maxfiles=5242880
-sudo sysctl -w kern.maxfilesperproc=524288
-```
-
 ### Install dependencies
 This will create a `node_modules` folder in your application's root directory and a [lock file](https://yarnpkg.com/lang/en/docs/yarn-lock/).
 ```bash
