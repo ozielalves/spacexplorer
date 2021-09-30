@@ -181,8 +181,9 @@ The `react-native-iphone-x-helper` package was imported and used to ensure that 
 │   │   ├── ListHeader
 │   │   ├── ListItem
 │   │   ├── ListSkeleton
-│   │   ├── MissionErrorState
 │   │   ├── Missions
+│   │   ├── MissionsEmptyState
+│   │   ├── MissionsErrorState
 │   │   ├── Profile
 │   │   └── Skeleton
 │   ├── global
