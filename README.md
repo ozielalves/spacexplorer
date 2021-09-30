@@ -119,7 +119,7 @@ To view the app on your phone:
 ```
 1. Open Expo Client on phone
 2. Scan QR code presented in terminal
-3. Code
+3. Enjoy launches
 ```
 
 Alternatively, you can run the app in a simulator on your workstation:
@@ -136,7 +136,7 @@ expo start --android
 
 ## Main Packages
 
-All packages used in these project can be found in the package.json file
+All packages used in these project can be found in the package.json file.
 
 ### **Fonts**
 
