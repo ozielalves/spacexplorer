@@ -6,7 +6,7 @@
 
 <br>
 
-The SpaceXplorer app is an app that displays SpaceX mission launches using the [SpaceX GraphQL API](https://api.spacex.land/graphql/). The application was developed using [React Native](https://reactnative.dev) and [Expo](https://expo.dev), a set of tools and services built around React Native and native platforms that helps the development, build, deploy, and quickly iterate on iOS, Android, and web apps from the same codebase.
+The SpaceXplorer app is an app that displays SpaceX mission launches using the [SpaceX GraphQL API](https://api.spacex.land/graphql/). The application was developed using [React Native](https://reactnative.dev) and [Expo](https://expo.dev), a set of tools and services built around React Native and native platforms that helps the development, build and deploy of multiplatform projects and quickly iterate on iOS, Android, and web apps from the same codebase.
 
 # Table of content
 
@@ -40,13 +40,13 @@ A simple welcome screen.
 Displays latest launches data chronologically in a user-friendly manner.
 
 - List pagination using infinite scroll. **(Bonus)** 
-- Minor modifications to the request query to provide performance improvements (added lunch id) and infinite scroll (query variables). **(Bonus)** 
-- Preview of image quantity and rocket name **(Bonus)**
+- Minor modifications to the request query to provide performance improvements (added launch id) and infinite scroll (query variables). **(Bonus)** 
+- Preview of the number of images and rocket name **(Bonus)**
 - Visual Feedbacks
   - List skeleton loading **(Bonus)**
   - List empty state **(Bonus)**
 ### **Launch Details**
-Displays launch details including images and the link to the launch article. The launch images can be be toggled as a favorite. You can access the article by tapping the description article item or share the link to the article by tapping the share option in the upper right corner of the screen.
+Displays launch details including images and the link to the launch article. The launch images can be be toggled as a favorite. You can access the article by tapping the article description item or share the link to the article by tapping the share option in the upper right corner of the screen.
 
 - Share launch article **(Bonus)**
 - Image modal **(Bonus)**
@@ -140,23 +140,23 @@ All packages used in these project can be found in the package.json file
 
 ### **Fonts**
 
-O pacote expo-google-fonts foi utilizado para o uso das fontes inter e rajdhani.
+The `inter` and `rajdhani` fonts from the `expo-google-fonts` package were used in the project.
 
 ### **Navigation**
 
-The react-navigation package is responsible for the app's stack navigation.
+The `react-navigation` package is responsible for the app's `stack` navigation.
 
 ### **Beatiful Gradients**
 
-the expo-linear-gradient package was used to render some beautiful linear gradients within the application.
+The `expo-linear-gradient` package was used to render some beautiful linear gradients within the application.
 
 ### **Should not be a problem for Iphone X**
 
-the react-native-iphone-x-helper package was imported and used to ensure that iPhone X users onwards can correctly view all screen elements.
+The `react-native-iphone-x-helper` package was imported and used to ensure that iPhone X and onwards users can correctly view all screen elements.
 
 ### **Vectors for life**
 
-react-native-svg and react-native-svg-transformer were necessary packages for using SVG elements.
+`react-native-svg` and `react-native-svg-transformer` were necessary packages for using SVG elements.
 
 ## Project Structure
 
