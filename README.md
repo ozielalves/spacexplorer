@@ -56,7 +56,7 @@ Displays launch details including images and the link to the launch article. The
 ## Getting Started
 
 ```bash
-git clone git@github.com:ozielalves/spacexplorer.git
+git clone https://github.com/ozielalves/spacexplorer
 cd spacexplorer
 ```
 
